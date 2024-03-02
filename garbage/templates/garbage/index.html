@@ -1,27 +1,100 @@
 {% extends 'base.html' %}
-{block content}
-    {% if latest_garbage_list %}
-        {% for garbage in latest_garbage_list %}
-            {{ garbage.description }} </br>
-        {% endfor %}
-    {% else %}
-        <p>No polls are available.</p>
-    {% endif %}
+{% block main %}
     <div class="parent">
-        <div class="div1">navigation</div>
-        <div class="div2">upload</div>
-        <div class="div3">list</div>
+        <div class="parent">
+            <div class="div1">
+                <h1>Upload</h1>
+
+                <div class="cta-text-box">
+
+                    <form class="cta-form" method="POST">
+                        {% csrf_token %}
+                        {{form}}
+                        <button type="submit" class="btn btn--form">Add</button>
+                    </form>
+                </div>
+
+            </div>
+            <div class="div2" style="font-size: 10px">
+                <table class="styled-table">
+
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Points</th>
+                            <th>Description </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                                {% for garbage in latest_garbage_list %}
+                                    <tr>
+                                            <td><a href="{% url 'garbage:details' garbage.id %}">{{ garbage.type_of_garbage }}</a></td>
+                                            <td>{{ garbage.number_of_points }}</td>
+                                            <td>{{ garbage.description }}</td>
+                                        </a>
+                                </tr>
+                                {% endfor %}
+                        <!-- and so on... -->
+                    </tbody>
+                </table>
+            </div>
+            </div>
     </div>
         <style>
-        .parent {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(5, 1fr);
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
-    }
-    .div1 { grid-area: 1 / 1 / 2 / 6; background-color: red;}
-    .div2 { grid-area: 2 / 1 / 6 / 3; background-color: orange;}
-    .div3 { grid-area: 2 / 3 / 6 / 6; background-color: blue;}
+            .parent {
+display: grid;
+grid-template-columns: repeat(5, 1fr);
+grid-template-rows: repeat(5, 1fr);
+grid-column-gap: 0px;
+grid-row-gap: 0px;
+}
+.div1 { grid-area: 1 / 1 / 6 / 3; width: 100vh;}
+.div2 { grid-area: 1 / 3 / 6 / 6; width: 100vh;}
+
+.styled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.styled-table thead tr {
+    background-color: #cf711f;
+    color: #ffffff;
+    text-align: left;
+}
+
+.styled-table th, .styled-table td {
+    padding: 12px 15px;
+}
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+/* .styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+} */
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #cf711f;
+}
+
+/* .hoverable-link:hover, .hoverable-link:active{
+    background-color: #0000FF;
+} */
+
+.hoverable-link:link,
+.hoverable-link:hover {
+  text-decoration: none;
+  color: #0000FF;
+  transition: all 0.3s;
+}
+/* .styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: #cf711f;
+} */
     </style>
 {% endblock %}

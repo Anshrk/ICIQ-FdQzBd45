@@ -18,6 +18,6 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path("garbage/", include("garbage.urls")),
+    path("", include("garbage.urls")),
     path("admin/", admin.site.urls),
 ]

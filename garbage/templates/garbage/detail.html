@@ -1,1 +1,9 @@
-{{garbage}}
+{% extends 'base.html' %}
+
+{% block main %}
+<h1>{{garbage.description}}</h1>
+<h2>Type: {{garbage.type_of_garbage}}  Points: {{garbage.number_of_points}}</h2>
+<img src="{{garbage.pictures}}" width="350" height="350"></img>
+
+<div style="max-width:100%;overflow:hidden;color:red;width:500px;height:500px;"><div id="google-maps-display" style="height:100%; width:100%;max-width:100%;"><iframe style="height:100%;width:100%;border:0;" frameborder="0" src="https://www.google.com/maps/embed/v1/search?q={{location}}&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"></iframe></div><a class="from-embedmap-code" rel="nofollow" href="https://www.bootstrapskins.com/themes" id="get-map-data">premium bootstrap themes</a><style>#google-maps-display img{max-width:none!important;background:none!important;font-size: inherit;font-weight:inherit;}</style></div>
+{% endblock %}

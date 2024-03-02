@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+<div class="cta-text-box">
+
+    <form class="cta-form" method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+      <button type="submit" class="btn btn--form">Sign up now</button>
+
+      <!-- <input type="checkbox" />
+      <input type="number" /> -->
+    </form>
+  </div>
+{% endblock %}
