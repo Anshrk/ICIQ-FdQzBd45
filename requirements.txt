@@ -1,0 +1,4 @@
+asgiref==3.7.2
+Django==5.0.2
+-e git+ssh://git@github.com/Anshrk/ICIQ-FdQzBd45.git@d719cd1a8d540adc09c69ac656434c7c88a6ab50#egg=litterquitter
+sqlparse==0.4.4
