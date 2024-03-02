@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "litterquitter"
+version = "0.1.0"
+description = "A government-backed initiative incentivizing citizens to report littered areas and unauthorized garbage landfills for rewards."
+authors = ["Ansh Kashyap"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+Django = "^5.0.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
