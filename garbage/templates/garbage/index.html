@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{block content}
+    {% if latest_garbage_list %}
+        {% for garbage in latest_garbage_list %}
+            {{ garbage.description }} </br>
+        {% endfor %}
+    {% else %}
+        <p>No polls are available.</p>
+    {% endif %}
+    <div class="parent">
+        <div class="div1">navigation</div>
+        <div class="div2">upload</div>
+        <div class="div3">list</div>
+    </div>
+        <style>
+        .parent {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    }
+    .div1 { grid-area: 1 / 1 / 2 / 6; background-color: red;}
+    .div2 { grid-area: 2 / 1 / 6 / 3; background-color: orange;}
+    .div3 { grid-area: 2 / 3 / 6 / 6; background-color: blue;}
+    </style>
+{% endblock %}
