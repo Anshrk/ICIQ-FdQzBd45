@@ -24,8 +24,8 @@ def detail(request, garbage_id):
         garbage = Garbage.objects.get(pk=garbage_id)
     except Garbage.DoesNotExist:
         raise Http404("Garbage has been cleared, fear not soldier")
-    print('+'.join(garbage.location_link.split(" ")))
-    return render(request, "garbage/detail.html", {"garbage": garbage, "location": '+'.join(garbage.location_link.split(" "))})
+    print('+'.join(garbage.location.split(" ")))
+    return render(request, "garbage/detail.html", {"garbage": garbage, "location": '+'.join(garbage.location.split(" "))})
 
 def signup(request): 
     # print(request.method)

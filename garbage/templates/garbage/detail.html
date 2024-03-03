@@ -1,9 +1,42 @@
 {% extends 'base.html' %}
 
 {% block main %}
-<h1>{{garbage.description}}</h1>
-<h2>Type: {{garbage.type_of_garbage}}  Points: {{garbage.number_of_points}}</h2>
-<img src="{{garbage.pictures}}" width="350" height="350"></img>
+<script>
+    let cleaned = false;
+    let displayAccept = () => {
+        if (cleaned === false) {
+            cleaned = true;
+            document.querySelector('.get-form').style.display = "block";
+        }
+    }
+</script>
 
+<div>
+    <img src="{{garbage.pictures}}" width="350" height="350"></img> <h1 style="margin:5px;">Description: {{garbage.description}}</h1><h2 style="padding:5px;">Type: {{garbage.type_of_garbage}} </h2><br><h2 class="points" style="padding: 5px;"> Points: {{garbage.number_of_points}}</h2><span style="margin: 15px"><div><button onclick="displayAccept()" class="button-style">Accept</button><form class="get-form cta-form" style="display:none;" method="POST">{% csrf_token %}<input style="border:solid;font-size:10px" type="text" id="lname" name="lname"><input type="submit" value="Submit"></form></div></span></div>
 <div style="max-width:100%;overflow:hidden;color:red;width:500px;height:500px;"><div id="google-maps-display" style="height:100%; width:100%;max-width:100%;"><iframe style="height:100%;width:100%;border:0;" frameborder="0" src="https://www.google.com/maps/embed/v1/search?q={{location}}&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"></iframe></div><a class="from-embedmap-code" rel="nofollow" href="https://www.bootstrapskins.com/themes" id="get-map-data">premium bootstrap themes</a><style>#google-maps-display img{max-width:none!important;background:none!important;font-size: inherit;font-weight:inherit;}</style></div>
+
+
+
+<style>
+.button-style {
+    display: inline-block;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    background-color: #cf711f;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+</style>
+
+<style>
+    *{
+        margin:0px;
+        padding: 0px;
+    }
+</style>
+
 {% endblock %}
+
